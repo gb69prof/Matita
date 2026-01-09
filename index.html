@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Lavagna iPad</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="dot"></div>
+      <div>
+        <div class="title">Lavagna</div>
+        <div class="subtitle">penna • colori • gomma • salva</div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button id="btnUndo" class="btn" title="Annulla">↶</button>
+      <button id="btnRedo" class="btn" title="Ripristina">↷</button>
+      <button id="btnClear" class="btn danger" title="Pulisci">Pulisci</button>
+      <button id="btnFullscreen" class="btn" title="Schermo intero">⛶</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <aside class="panel">
+      <section class="group">
+        <div class="label">Strumento</div>
+        <div class="toolrow">
+          <button id="toolPen" class="tool selected">✎ Penna</button>
+          <button id="toolEraser" class="tool">⌫ Gomma</button>
+        </div>
+        <div class="hint">Tip: su iPad la gomma “pulisce” col colore dello sfondo.</div>
+      </section>
+
+      <section class="group">
+        <div class="label">Colore</div>
+        <div class="row">
+          <input id="color" type="color" value="#111111" />
+          <button class="chip" data-color="#111111" title="Nero"></button>
+          <button class="chip" data-color="#d11f2f" title="Rosso"></button>
+          <button class="chip" data-color="#1463ff" title="Blu"></button>
+          <button class="chip" data-color="#0f8a4b" title="Verde"></button>
+        </div>
+      </section>
+
+      <section class="group">
+        <div class="label">Spessore</div>
+        <div class="row">
+          <input id="size" type="range" min="1" max="30" value="6" />
+          <div class="pill"><span id="sizeVal">6</span> px</div>
+        </div>
+        <div class="hint">Apple Pencil: pressione = variazione leggera di spessore (più stabile).</div>
+      </section>
+
+      <section class="group">
+        <div class="label">Sfondo</div>
+        <div class="row">
+          <input id="bg" type="color" value="#ffffff" />
+          <button id="btnGrid" class="btn small" title="Griglia">Griglia</button>
+        </div>
+      </section>
+
+      <section class="group">
+        <div class="label">Salva</div>
+        <div class="col">
+          <button id="btnSavePng" class="btn primary">Salva immagine (PNG)</button>
+          <button id="btnSaveProject" class="btn">Salva progetto</button>
+        </div>
+        <div class="hint">
+          Se supportato, scegli la cartella. Altrimenti salva in “Download”.
+        </div>
+      </section>
+
+      <section class="group">
+        <div class="label">Apri</div>
+        <div class="col">
+          <button id="btnOpenProject" class="btn">Apri progetto</button>
+          <button id="btnImportImage" class="btn">Importa immagine</button>
+          <input id="fileInput" type="file" accept=".lavagna.json,application/json,image/*" hidden />
+        </div>
+      </section>
+
+      <section class="group">
+        <div class="label">Suggerimento</div>
+        <div class="hint">
+          Su iPad: Condividi → “Aggiungi a Home” per usarla come app.
+        </div>
+      </section>
+    </aside>
+
+    <section class="board">
+      <div class="canvaswrap">
+        <canvas id="canvas" aria-label="Lavagna"></canvas>
+        <div id="toast" class="toast" role="status" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
